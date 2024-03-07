@@ -1,6 +1,9 @@
 import { Raleway } from "next/font/google";
 import "./globals.css";
 import Header from "./(components)/Header";
+import Image from "next/image";
+import scribble from '../public/scribble.svg'
+import grain from '../public/grain.svg'
 
 const roboto = Raleway({ subsets: ["latin"] });
 
@@ -13,6 +16,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={roboto.className}>
+        <div className="absolute top-0 left-0 w-full h-full -z-10">
+          <div className="relative w-full h-full opacity-[15%] saturate-[5%]">
+            <Image src={scribble} className="absolute top-0 left-0 w-full h-full object-cover" alt="Scribble" />
+            <Image src={scribble} className="absolute top-0 left-0 w-full h-full object-cover blur-sm" alt="Scribble" />
+            <Image src={grain} className="absolute top-0 left-0 w-full h-full object-cover opacity-50" alt="Grain" />
+          </div>
+        </div>
         <Header />
         <div className="mx-[1rem] sm:mx-[2rem] lg:mx-[10rem] h-[85vh]">{children}</div>
       </body>
